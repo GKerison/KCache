@@ -2,7 +2,6 @@ package cn.kerison.kcache;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,8 +20,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        KPrefs.init(this);
 
+        KPrefs.init(this);
         Set<String> data = new HashSet<>();
         data.add("item1");
         data.add("item2");
@@ -36,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         KFiles.init(this, "KCaches");
-
         JSONObject json = new JSONObject();
         try {
             json.put("name", "Hehe");
@@ -45,19 +43,19 @@ public class MainActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        KFiles.get().putJSONObject("json", json, 5);
-        Log.i("KFiles: %s", KFiles.get().getJSONObject("json")+"");
+        KFiles.putJSONObject("json", json, 5);
+        KL.i("KFiles: %s", KFiles.getJSONObject("json")+"");
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Log.i("KFiles: %s", KFiles.get().getJSONObject("json")+"");
+        KL.i("KFiles: %s", KFiles.getJSONObject("json")+"");
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Log.i("KFiles: %s", KFiles.get().getJSONObject("json")+"");
+        KL.i("KFiles: %s", KFiles.getJSONObject("json")+"");
     }
 }
